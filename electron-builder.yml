@@ -1,0 +1,7 @@
+appId: com.realopen.manager
+files:
+  - electron-app/**
+  - dist/**
+extraResources:
+  - from: api
+    to: api
