@@ -37,6 +37,26 @@ app.whenReady().then(() => {
     }
   });
 
+  ipcMain.handle('read-directory', async (event, dirPath) => {
+    if (!dirPath) return [];
+    try {
+      const items = fs.readdirSync(dirPath, { withFileTypes: true });
+      return items.map(item => ({
+        name: item.name,
+        isDirectory: item.isDirectory(),
+        path: path.join(dirPath, item.name)
+      })).sort((a, b) => {
+        // Sort directories first, then files
+        if (a.isDirectory && !b.isDirectory) return -1;
+        if (!a.isDirectory && b.isDirectory) return 1;
+        return a.name.localeCompare(b.name);
+      });
+    } catch (error) {
+      console.error('Error reading directory:', error);
+      return [];
+    }
+  });
+
   apiProcess = spawn('node', ['api/index.js'], {
     stdio: 'inherit',
     shell: true,

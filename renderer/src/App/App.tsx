@@ -5,8 +5,13 @@ import { WorkingLocationModal } from '../Components/WorkingLocationModal/Working
 
 import { useAppStore } from '../Store/useAppStore';
 
-import styles from './App.module.scss'
 import { FileExplorerLeftPanel } from '../Components/FileExplorerLeftPanel/FileExplorerLeftPanel';
+import { UIHeader } from '../UI/UIHeader/UIHeader';
+import { UIHeaderItem } from '../UI/UIHeader/UIHeaderItem/UIHeaderItem';
+import { AppRouter } from './AppRouter/AppRouter';
+
+import styles from './App.module.scss'
+
 
 
 export const App = () => {
@@ -16,12 +21,17 @@ export const App = () => {
     <BrowserRouter>
       <div className={styles.App}>
         <UILayout>
+          <UIHeader>
+            <UIHeaderItem text="File Explorer" />
+            <UIHeaderItem text="Mod Manager" />
+          </UIHeader>
           <div className={styles.AppContent}>
-            {
+            {/* {
               !showWorkingLocationModal && (
                 <FileExplorerLeftPanel />
               )
-            }
+            } */}
+            <AppRouter />
           </div>
         </UILayout>
 

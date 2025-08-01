@@ -1,0 +1,12 @@
+.UIHeader {
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  width: 100%;
+  background-color: #b43434;
+
+  &NavBar {
+    display: flex;
+    height: 100%;
+  }
+}

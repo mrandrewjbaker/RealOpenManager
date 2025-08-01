@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useAppStore } from '../../Store/useAppStore';
+import { FileTree } from './FileTree';
 import styles from './FileExplorerLeftPanel.module.scss';
 
 export const FileExplorerLeftPanel: React.FC = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [panelWidth, setPanelWidth] = useState(250); // pixels
+  const { gamePath } = useAppStore();
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
@@ -42,7 +45,7 @@ export const FileExplorerLeftPanel: React.FC = () => {
   return (
     <div className={styles.FileExplorerLeftPanelContainer}>
       <div className={styles.FileExplorerLeftPanel} style={calculatePanelStyle()}>
-        {/* File Explorer content goes here */}
+        <FileTree directoryPath={gamePath} />
       </div>
       <div 
         className={styles.FileExplorerLeftPanelHandle} 
