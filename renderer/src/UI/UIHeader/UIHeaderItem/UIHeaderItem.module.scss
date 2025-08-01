@@ -8,6 +8,8 @@
   color: white; // Ensure text is visible
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.2rem;
+  cursor: pointer;
+  user-select: none;
 
   &:hover {
     background-color: #a32f2f; // Darken on hover
@@ -15,5 +17,14 @@
 
   &.active {
     background-color: #9c2a2a; // Highlight active item
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    
+    &:hover {
+      background-color: #b43434; // Don't change color on hover when disabled
+    }
   }
 }

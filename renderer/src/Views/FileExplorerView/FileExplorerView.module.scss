@@ -1,0 +1,31 @@
+.FileExplorerView {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.FileExplorerContent {
+  display: flex;
+  height: calc(100% - 1rem); // Adjusted to account for margin
+  width: calc(100% - 1rem); // Adjusted to account for margin
+  margin: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-secondary, #3c4d5f);
+  border-radius: 8px;
+}
+
+.FileExplorerPlaceholder {
+  text-align: center;
+  color: var(--text-secondary, #e0e0e0);
+  
+  h2 {
+    margin-bottom: 1rem;
+    color: var(--text-primary, #e0e0e0);
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}

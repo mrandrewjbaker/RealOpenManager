@@ -5,7 +5,6 @@ import { WorkingLocationModal } from '../Components/WorkingLocationModal/Working
 
 import { useAppStore } from '../Store/useAppStore';
 
-import { FileExplorerLeftPanel } from '../Components/FileExplorerLeftPanel/FileExplorerLeftPanel';
 import { UIHeader } from '../UI/UIHeader/UIHeader';
 import { UIHeaderItem } from '../UI/UIHeader/UIHeaderItem/UIHeaderItem';
 import { AppRouter } from './AppRouter/AppRouter';
@@ -26,11 +25,6 @@ export const App = () => {
             <UIHeaderItem text="Mod Manager" />
           </UIHeader>
           <div className={styles.AppContent}>
-            {/* {
-              !showWorkingLocationModal && (
-                <FileExplorerLeftPanel />
-              )
-            } */}
             <AppRouter />
           </div>
         </UILayout>
