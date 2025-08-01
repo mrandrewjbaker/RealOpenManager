@@ -6,21 +6,26 @@ import { WorkingLocationModal } from '../Components/WorkingLocationModal/Working
 import { useAppStore } from '../Store/useAppStore';
 
 import styles from './App.module.scss'
+import { FileExplorerLeftPanel } from '../Components/FileExplorerLeftPanel/FileExplorerLeftPanel';
 
 
 export const App = () => {
-  const showModal = useAppStore((s) => s.showGamePathModal);
+  const showWorkingLocationModal = useAppStore((s) => s.showGamePathModal);
 
   return (
     <BrowserRouter>
       <div className={styles.App}>
         <UILayout>
-          <div>
-            {/* Your content goes here */}
+          <div className={styles.AppContent}>
+            {
+              !showWorkingLocationModal && (
+                <FileExplorerLeftPanel />
+              )
+            }
           </div>
         </UILayout>
 
-        {showModal && (
+        {showWorkingLocationModal && (
           <WorkingLocationModal />
         )}
 
