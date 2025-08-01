@@ -1,0 +1,42 @@
+.UILayout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #575757;
+
+
+  &Header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3.5rem;
+
+    &NavBar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      margin: 1rem 0;
+
+      border-radius: 0 0 0.5rem 0.5rem;
+      background-color: #ff9100;
+    }
+  }
+
+  &Body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: #575757;
+
+    &MainContent {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      background-color: #262626;
+    }
+  }
+}

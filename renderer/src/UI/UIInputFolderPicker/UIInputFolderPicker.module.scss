@@ -1,0 +1,42 @@
+.UIInput {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  &Label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
+  }
+
+  &Field {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #303030;
+    color: #ffffff;
+    flex-grow: 1;
+  }
+
+  &FolderPicker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &Button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #007BFF;
+    color: #ffffff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}

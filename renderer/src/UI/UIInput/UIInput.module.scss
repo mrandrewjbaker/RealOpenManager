@@ -1,0 +1,22 @@
+.UIInput {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  &Label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
+
+  }
+
+  &Field {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #303030;
+    color: #ffffff;
+  }
+}

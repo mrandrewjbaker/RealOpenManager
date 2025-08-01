@@ -1,10 +1,6 @@
-import { app, BrowserWindow } from 'electron';
-import path from 'path';
-import { spawn } from 'child_process';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const path = require('path');
+const { spawn } = require('child_process');
 
 let apiProcess;
 
@@ -14,16 +10,24 @@ function createWindow() {
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
-
   win.loadURL('http://localhost:5173'); // Vite dev server
 }
 
 app.whenReady().then(() => {
+  // Register IPC handlers here to ensure main process is ready
+  ipcMain.handle('select-folder', async () => {
+    const result = await dialog.showOpenDialog({ properties: ['openDirectory'] });
+    if (result.canceled || result.filePaths.length === 0) return '';
+    return result.filePaths[0];
+  });
+
   apiProcess = spawn('node', ['api/index.js'], {
     stdio: 'inherit',
-    shell: true
+    shell: true,
   });
   createWindow();
 });

@@ -1,6 +1,7 @@
 // electron-app/preload.js
-import { contextBridge } from 'electron';
+const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('api', {
-  hello: () => 'RealOpenManager'
+  hello: () => 'RealOpenManager',
+  selectFolder: () => ipcRenderer.invoke('select-folder'),
 });
