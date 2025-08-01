@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
+const fs = require('fs');
 const { spawn } = require('child_process');
 
 let apiProcess;
@@ -23,6 +24,17 @@ app.whenReady().then(() => {
     const result = await dialog.showOpenDialog({ properties: ['openDirectory'] });
     if (result.canceled || result.filePaths.length === 0) return '';
     return result.filePaths[0];
+  });
+
+  ipcMain.handle('check-file-exists', async (event, dirPath, fileName) => {
+    if (!dirPath || !fileName) return false;
+    try {
+      const filePath = path.join(dirPath, fileName);
+      return fs.existsSync(filePath);
+    } catch (error) {
+      console.error('Error checking file existence:', error);
+      return false;
+    }
   });
 
   apiProcess = spawn('node', ['api/index.js'], {
